@@ -7,7 +7,7 @@ This is a simple daily scheduler, This is a scheduler for your average 9-5 work 
 https://github.com/Tvanmeveren/The-Scheduler.git
 
 <H3> Live site URL <H3>
-
+ https://tvanmeveren.github.io/The-Scheduler/
 
 
 ![image](https://user-images.githubusercontent.com/111665712/193726798-82e44b42-2548-4514-a9c1-02a01fed5092.png)
