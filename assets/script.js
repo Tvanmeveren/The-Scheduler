@@ -4,30 +4,31 @@ $("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
 
 // highlight timeblock by past, present, future
 let currentHour = parseInt(moment().format("H"))
-let pageTime = $(".task")
+let Timing = $(".task")
 
-for (i = 0; i < pageTime.length; i++) {
-    if (currentHour == pageTime[i].getAttribute("value")) {
-        $(pageTime[i]).removeClass("future")
-        $(pageTime[i]).removeClass("past")
-        $(pageTime[i]).addClass("present")
+for (i = 0; i < Timing.length; i++) {
+    if (currentHour == Timing[i].getAttribute("value")) {
+        $(Timing[i]).removeClass("future")
+        $(Timing[i]).removeClass("past")
+        $(Timing[i]).addClass("present")
     }
-    else if (currentHour < pageTime[i].getAttribute("value")) {
-        $(pageTime[i]).removeClass("past")
-        $(pageTime[i]).removeClass("present")
-        $(pageTime[i]).addClass("future")
+    else if (currentHour < Timing[i].getAttribute("value")) {
+        $(Timing[i]).removeClass("past")
+        $(Timing[i]).removeClass("present")
+        $(Timing[i]).addClass("future")
     }
     else {
-        $(pageTime[i]).removeClass("present")
-        $(pageTime[i]).removeClass("future")
-        $(pageTime[i]).addClass("past")
+        $(Timing[i]).removeClass("present")
+        $(Timing[i]).removeClass("future")
+        $(Timing[i]).addClass("past")
     }
 }
 //save text entries to localStorage 
 
-if (localStorage.getItem("taskData") === null) {
-    let taskData = [
-        {
+if (localStorage.getItem("Data") === null) {
+    let Data = [
+        {       
+            
             "9": "",
             "10": "",
             "11": "",
@@ -39,7 +40,7 @@ if (localStorage.getItem("taskData") === null) {
             "17": "",
         }
     ];
-    localStorage.setItem("taskData", JSON.stringify(taskData));
+    localStorage.setItem("Data", JSON.stringify(Data));
 }
 
 let saveButton = $(".saveBtn")
@@ -51,18 +52,18 @@ for (i = 0; i < saveButton.length; i++) {
        
         let textHour = e.target.parentElement.parentElement.childNodes[3].getAttribute('value')
         
-        taskData = JSON.parse(localStorage.getItem("taskData"));
+        Data = JSON.parse(localStorage.getItem("Data"));
         
-        taskData[0][textHour] = textArea
+        Data[0][textHour] = textArea
     
-        localStorage.setItem("taskData", JSON.stringify(taskData))
+        localStorage.setItem("Data", JSON.stringify(Data))
     })
 }
 
-let storeTaskData = JSON.parse(localStorage.getItem("taskData"))  
+let storeData = JSON.parse(localStorage.getItem("Data"))  
 let textAreaArray = $(".description")
 
 for (i=0; i<textAreaArray.length; i++){
     let textAreaHour = textAreaArray[i].parentElement.getAttribute("value")
-    textAreaArray[i].textContent = storeTaskData[0][textAreaHour]
+    textAreaArray[i].textContent = storeData[0][textAreaHour]
 }
